@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "es212-case",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "/Users/dominicross/Documents/PersonalProjects/es212-case",
+      "port": 3000
+    }
+  ]
+}
