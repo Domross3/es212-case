@@ -158,10 +158,10 @@ export default function Evidence({
   }, [open]);
 
   return (
-    <div className="p-5">
+    <div className="px-5 pb-5 pt-9">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="text-xl font-bold tracking-tight text-foreground">
-          The ES 212 syllabus, annotated
+          ES 212 Syllabus
         </h2>
         <div className="flex gap-3 text-xs">
           <a

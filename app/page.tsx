@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         <p className="relative mt-0.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
           B.S. Computer Science &amp; Cognitive Science · Minors: Business,
-          Philosophy · Entrepreneurship minor — in progress
+          Philosophy · Entrepreneurship minor
         </p>
         <div className="marquee relative mt-2">
           <div className="marquee-track gap-x-3 text-[13px] leading-tight text-foreground">
@@ -69,7 +69,7 @@ export default function Home() {
           <Evidence units={UNITS} skills={SKILLS} docs={loadSyllabi()} />
         </section>
 
-        <section aria-label="Ask the syllabi" className="min-h-0">
+        <section aria-label="Dom's Course Agent" className="min-h-0">
           <Chat />
         </section>
       </div>

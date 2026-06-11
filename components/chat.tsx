@@ -46,7 +46,7 @@ export default function Chat() {
         {messages.length === 0 ? (
           <div className="flex h-full flex-col justify-center">
             <h2 className="text-xl font-semibold text-foreground">
-              Ask the syllabi
+              Dom&apos;s Course Agent
             </h2>
             <p className="mt-1 text-sm text-muted">
               Answers come only from the 16 course documents, with the source
