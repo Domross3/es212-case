@@ -39,14 +39,26 @@ export default function Home() {
           B.S. Computer Science &amp; Cognitive Science · Minors: Business,
           Philosophy · Entrepreneurship minor — in progress
         </p>
-        <ul className="relative mt-2 flex flex-wrap gap-x-2 gap-y-1 text-[13px] leading-tight text-foreground">
-          {stats.map((s, i) => (
-            <li key={s} className="flex items-center gap-x-2">
-              {i > 0 && <span aria-hidden className="text-um-maize">•</span>}
-              {s}
-            </li>
-          ))}
-        </ul>
+        <div className="marquee relative mt-2">
+          <div className="marquee-track gap-x-3 text-[13px] leading-tight text-foreground">
+            {[false, true].map((dup) => (
+              <ul
+                key={dup ? "dup" : "main"}
+                aria-hidden={dup || undefined}
+                className={`flex shrink-0 items-center gap-x-3 ${dup ? "marquee-dup" : ""}`}
+              >
+                {stats.map((s) => (
+                  <li key={s} className="flex items-center gap-x-3">
+                    {s}
+                    <span aria-hidden className="text-um-maize">
+                      •
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
       </header>
 
       <div className="grid min-h-0 flex-1 lg:grid-cols-2">

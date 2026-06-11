@@ -67,6 +67,52 @@ body {
   border-color: rgba(255, 203, 5, 0.4);
 }
 
+/* Stats conveyor: content duplicated once; sliding -50% → 0 drifts it
+   left-to-right and loops seamlessly. */
+@keyframes marquee-ltr {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 4%,
+    black 96%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 4%,
+    black 96%,
+    transparent
+  );
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-ltr 36s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+  }
+  .marquee-dup {
+    display: none;
+  }
+}
+
 /* Assistant chat messages: minimal markdown styling */
 .chat-markdown p {
   margin-block: 0.5rem;
