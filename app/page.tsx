@@ -4,6 +4,8 @@ import { SKILLS, UNITS } from "@/lib/coverage";
 import { loadSyllabi } from "@/lib/syllabi";
 
 const stats = [
+  "B.S. Computer Science & Cognitive Science",
+  "Minors: Business, Philosophy, Entrepreneurship",
   "30 business credits",
   "22 entrepreneurship credits (excl. ES 212)",
   "13/13 ES 212 units covered",
@@ -18,37 +20,31 @@ const stats = [
 export default function Home() {
   return (
     <main className="flex h-dvh flex-col">
-      <header className="relative overflow-hidden border-b border-rule px-5 py-3">
+      <header className="relative overflow-hidden border-b border-rule px-6 py-6">
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-24 left-1/2 h-48 w-[60rem] max-w-full -translate-x-1/2"
+          className="pointer-events-none absolute -top-20 left-1/2 h-56 w-[64rem] max-w-full -translate-x-1/2"
           style={{
             background:
               "radial-gradient(ellipse at center, rgba(255,203,5,0.12), transparent 68%)",
           }}
         />
-        <div className="relative flex flex-wrap items-baseline gap-x-3">
-          <h1 className="text-lg font-bold tracking-tight text-foreground">
-            ES 212 — <span className="text-um-maize">Waiver Request</span>
-          </h1>
-          <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-            Dom Ross · University of Michigan
-          </p>
-        </div>
-        <p className="relative mt-0.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-          B.S. Computer Science &amp; Cognitive Science · Minors: Business,
-          Philosophy · Entrepreneurship minor
+        <p className="relative font-mono text-xs uppercase tracking-[0.2em] text-muted">
+          Dom Ross · University of Michigan
         </p>
-        <div className="marquee relative mt-2">
-          <div className="marquee-track gap-x-3 text-[13px] leading-tight text-foreground">
+        <h1 className="relative mt-1.5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          ES 212 — <span className="text-um-maize">Waiver Request</span>
+        </h1>
+        <div className="marquee relative mt-4">
+          <div className="marquee-track gap-x-4 text-sm leading-tight text-foreground">
             {[false, true].map((dup) => (
               <ul
                 key={dup ? "dup" : "main"}
                 aria-hidden={dup || undefined}
-                className={`flex shrink-0 items-center gap-x-3 ${dup ? "marquee-dup" : ""}`}
+                className={`flex shrink-0 items-center gap-x-4 ${dup ? "marquee-dup" : ""}`}
               >
                 {stats.map((s) => (
-                  <li key={s} className="flex items-center gap-x-3">
+                  <li key={s} className="flex items-center gap-x-4">
                     {s}
                     <span aria-hidden className="text-um-maize">
                       •
