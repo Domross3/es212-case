@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
+/* Michigan-navy dark theme — design tokens from the approved
+   "Candidate B" Claude-design artifact (dark, navy, agent-forward). */
 :root {
-  --background: #fdfdfc;
-  --foreground: #15202b;
+  --background: #001226;
+  --foreground: #eef4fb;
   --um-blue: #00274c;
   --um-maize: #ffcb05;
-  --muted: #5b6b7b;
-  --rule: #e4e7ea;
+  --um-maize-2: #ffd84d;
+  --muted: #9fb6cf;
+  --rule: rgba(140, 178, 220, 0.2);
+  --panel: #012244;
+  --ink-on-maize: #1a1200;
 }
 
 @theme inline {
@@ -14,8 +19,11 @@
   --color-foreground: var(--foreground);
   --color-um-blue: var(--um-blue);
   --color-um-maize: var(--um-maize);
+  --color-um-maize-2: var(--um-maize-2);
   --color-muted: var(--muted);
   --color-rule: var(--rule);
+  --color-panel: var(--panel);
+  --color-ink-on-maize: var(--ink-on-maize);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,7 +31,40 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@keyframes umpulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes ringpulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.lift {
+  transition:
+    transform 0.16s ease,
+    background 0.16s ease,
+    border-color 0.16s ease;
+}
+.lift:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 203, 5, 0.4);
 }
 
 /* Assistant chat messages: minimal markdown styling */
@@ -46,8 +87,8 @@ body {
   margin-block: 0.25rem;
 }
 .chat-markdown strong {
-  font-weight: 600;
-  color: var(--um-blue);
+  font-weight: 700;
+  color: var(--um-maize-2);
 }
 .chat-markdown blockquote {
   border-left: 3px solid var(--um-maize);
@@ -59,58 +100,63 @@ body {
 .chat-markdown h2,
 .chat-markdown h3 {
   font-weight: 600;
-  color: var(--um-blue);
+  color: var(--foreground);
   margin-block: 0.75rem 0.25rem;
 }
 
-/* Full-page syllabus documents */
+/* Full-page syllabus documents (themed like the artifact's reader) */
 .doc-markdown {
-  font-size: 0.9rem;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.7;
 }
 .doc-markdown h1 {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -0.01em;
-  color: var(--um-blue);
-  margin-bottom: 0.5rem;
+  color: #ffffff;
+  margin-bottom: 6px;
 }
 .doc-markdown h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--um-blue);
-  margin-block: 1.25rem 0.4rem;
-  border-bottom: 2px solid var(--um-maize);
-  padding-bottom: 0.2rem;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: #ffffff;
+  margin: 26px 0 8px;
 }
 .doc-markdown h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--um-blue);
-  margin-block: 1rem 0.3rem;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 18px 0 6px;
 }
 .doc-markdown p {
-  margin-block: 0.5rem;
+  margin: 10px 0;
 }
 .doc-markdown ul,
 .doc-markdown ol {
-  margin-block: 0.5rem;
-  padding-left: 1.4rem;
+  margin: 10px 0;
+  padding-left: 22px;
   list-style: disc;
 }
 .doc-markdown ol {
   list-style: decimal;
 }
 .doc-markdown li {
-  margin-block: 0.2rem;
+  margin: 5px 0;
 }
 .doc-markdown strong {
-  font-weight: 600;
-  color: var(--um-blue);
+  font-weight: 700;
+  color: var(--um-maize-2);
+}
+.doc-markdown a {
+  color: var(--um-maize-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .doc-markdown blockquote {
   border-left: 3px solid var(--um-maize);
-  padding-left: 0.75rem;
+  padding-left: 16px;
   color: var(--muted);
-  margin-block: 0.6rem;
+  margin: 14px 0;
 }

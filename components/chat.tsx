@@ -45,19 +45,19 @@ export default function Chat() {
       <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto p-5">
         {messages.length === 0 ? (
           <div className="flex h-full flex-col justify-center">
-            <h2 className="text-xl font-semibold text-um-blue">
+            <h2 className="text-xl font-semibold text-foreground">
               Ask the syllabi
             </h2>
             <p className="mt-1 text-sm text-muted">
               Answers come only from the 16 course documents, with the source
               named for every claim.
             </p>
-            <div className="mt-5 flex flex-col items-start gap-2">
+            <div className="mt-5 flex flex-col items-start gap-2.5">
               {starters.map((q) => (
                 <button
                   key={q}
                   onClick={() => ask(q)}
-                  className="rounded-full border border-rule px-4 py-2 text-left text-sm text-um-blue transition-colors hover:border-um-maize hover:bg-um-maize/10"
+                  className="lift rounded-full border border-rule bg-white/[0.03] px-4.5 py-2.5 text-left text-sm text-foreground"
                 >
                   {q}
                 </button>
@@ -71,7 +71,7 @@ export default function Chat() {
                 key={m.id}
                 className={
                   m.role === "user"
-                    ? "ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-um-blue px-4 py-2.5 text-sm text-white"
+                    ? "ml-auto max-w-[82%] rounded-2xl rounded-br-[4px] border border-rule bg-um-blue px-4 py-2.5 text-sm text-foreground"
                     : "chat-markdown max-w-[95%] text-sm leading-relaxed text-foreground"
                 }
               >
@@ -83,12 +83,15 @@ export default function Chat() {
                 {m.role === "assistant" &&
                   busy &&
                   m.id === messages[messages.length - 1].id && (
-                    <span className="ml-1 inline-block h-3.5 w-1.5 animate-pulse bg-um-maize align-middle" />
+                    <span
+                      className="ml-1 inline-block h-3.5 w-1.5 bg-um-maize align-middle"
+                      style={{ animation: "umpulse 1s ease-in-out infinite" }}
+                    />
                   )}
               </div>
             ))}
             {error && (
-              <div className="text-sm text-red-700">
+              <div className="text-sm text-red-300">
                 Something went wrong.{" "}
                 <button onClick={() => regenerate()} className="underline">
                   Retry
@@ -106,7 +109,7 @@ export default function Chat() {
               <button
                 key={q}
                 onClick={() => ask(q)}
-                className="rounded-full border border-rule px-3 py-1.5 text-left text-xs text-um-blue transition-colors hover:border-um-maize hover:bg-um-maize/10"
+                className="rounded-full border border-um-maize/25 bg-um-maize/[0.08] px-3 py-1.5 text-left text-xs text-um-maize-2 transition-colors hover:border-um-maize/45"
               >
                 {q}
               </button>
@@ -118,7 +121,7 @@ export default function Chat() {
             e.preventDefault();
             ask(input);
           }}
-          className="flex items-end gap-2"
+          className="flex items-end gap-2.5 rounded-[13px] border border-rule bg-[rgba(0,8,20,0.55)] p-2 pl-4"
         >
           <textarea
             value={input}
@@ -132,12 +135,20 @@ export default function Chat() {
             rows={2}
             maxLength={MAX_MESSAGE_CHARS}
             placeholder="Ask anything about the syllabi…"
-            className="min-h-0 flex-1 resize-none rounded-lg border border-rule bg-white px-3 py-2 text-sm outline-none focus:border-um-blue"
+            className="min-h-0 flex-1 resize-none border-none bg-transparent py-1 text-[15px] text-foreground outline-none placeholder:text-muted/70"
           />
           <button
             type="submit"
             disabled={busy || input.trim().length === 0}
-            className="rounded-lg bg-um-blue px-4 py-2 text-sm font-medium text-white disabled:opacity-40"
+            className="rounded-[10px] px-4.5 py-2 text-sm font-bold text-ink-on-maize disabled:bg-white/10 disabled:text-muted"
+            style={
+              busy || input.trim().length === 0
+                ? undefined
+                : {
+                    background:
+                      "linear-gradient(135deg, var(--um-maize), #e0a800)",
+                  }
+            }
           >
             {busy ? "…" : "Ask"}
           </button>

@@ -18,20 +18,28 @@ const stats = [
 export default function Home() {
   return (
     <main className="flex h-dvh flex-col">
-      <header className="border-b border-rule px-5 py-3">
-        <div className="flex flex-wrap items-baseline gap-x-3">
-          <h1 className="text-lg font-semibold tracking-tight text-um-blue">
-            ES 212 — Waiver Request
+      <header className="relative overflow-hidden border-b border-rule px-5 py-3">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 left-1/2 h-48 w-[60rem] max-w-full -translate-x-1/2"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(255,203,5,0.12), transparent 68%)",
+          }}
+        />
+        <div className="relative flex flex-wrap items-baseline gap-x-3">
+          <h1 className="text-lg font-bold tracking-tight text-foreground">
+            ES 212 — <span className="text-um-maize">Waiver Request</span>
           </h1>
           <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
             Dom Ross · University of Michigan
           </p>
         </div>
-        <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
+        <p className="relative mt-0.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
           B.S. Computer Science &amp; Cognitive Science · Minors: Business,
           Philosophy · Entrepreneurship minor — in progress
         </p>
-        <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1 text-[13px] leading-tight text-foreground">
+        <ul className="relative mt-2 flex flex-wrap gap-x-2 gap-y-1 text-[13px] leading-tight text-foreground">
           {stats.map((s, i) => (
             <li key={s} className="flex items-center gap-x-2">
               {i > 0 && <span aria-hidden className="text-um-maize">•</span>}

@@ -44,13 +44,13 @@ function SyllabusText({
         let cls = "";
         if (line.startsWith("# ")) {
           node = renderInline(line.slice(2));
-          cls = "pt-2 text-lg font-semibold text-um-blue";
+          cls = "pt-2 text-lg font-bold text-white";
         } else if (line.startsWith("## ")) {
           node = renderInline(line.slice(3));
-          cls = "pt-3 text-base font-semibold text-um-blue";
+          cls = "pt-3 text-base font-bold text-white";
         } else if (line.startsWith("### ")) {
           node = renderInline(line.slice(4));
-          cls = "pt-2 font-semibold text-um-blue";
+          cls = "pt-2 font-bold text-white";
         } else if (line.startsWith("> ")) {
           node = renderInline(line.slice(2));
           cls = "border-l-3 border-um-maize pl-3 text-muted italic";
@@ -74,7 +74,7 @@ function SyllabusText({
             ref={isTarget ? targetRef : undefined}
             className={`${cls} ${
               isTarget
-                ? "rounded bg-um-maize/30 px-1 ring-2 ring-um-maize"
+                ? "rounded bg-um-maize/20 px-1 ring-2 ring-um-maize"
                 : ""
             }`}
           >
@@ -102,10 +102,10 @@ function Chip({
       title={citation.note}
       className={
         supplementary
-          ? "rounded-full border border-dashed border-rule px-2.5 py-0.5 text-xs text-muted hover:border-um-maize"
+          ? "rounded-[7px] border border-dashed border-rule px-2 py-1 font-mono text-[10.5px] tracking-[0.04em] text-muted hover:border-um-maize/40"
           : primary
-            ? "rounded-full bg-um-blue px-2.5 py-0.5 text-xs font-medium text-white hover:bg-um-blue/85"
-            : "rounded-full border border-rule px-2.5 py-0.5 text-xs text-um-blue hover:border-um-maize hover:bg-um-maize/10"
+            ? "rounded-[7px] bg-um-maize px-2 py-1 font-mono text-[10.5px] tracking-[0.04em] text-ink-on-maize hover:bg-um-maize-2"
+            : "rounded-[7px] border border-rule bg-white/[0.025] px-2 py-1 font-mono text-[10.5px] tracking-[0.04em] text-foreground hover:border-um-maize/40"
       }
     >
       {citation.course}
@@ -160,20 +160,20 @@ export default function Evidence({
   return (
     <div className="p-5">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="text-xl font-semibold text-um-blue">
+        <h2 className="text-xl font-bold tracking-tight text-foreground">
           The ES 212 syllabus, annotated
         </h2>
         <div className="flex gap-3 text-xs">
           <a
             href="/es212-syllabus.pdf"
             target="_blank"
-            className="font-medium text-um-blue underline decoration-um-maize decoration-2 underline-offset-2"
+            className="font-medium text-um-maize-2 underline underline-offset-2 hover:text-um-maize"
           >
             Official PDF
           </a>
           <a
             href="/syllabi"
-            className="font-medium text-um-blue underline decoration-um-maize decoration-2 underline-offset-2"
+            className="font-medium text-um-maize-2 underline underline-offset-2 hover:text-um-maize"
           >
             All 16 source documents →
           </a>
@@ -187,7 +187,7 @@ export default function Evidence({
       </p>
 
       {/* Course Overview — verbatim */}
-      <h3 className="mt-6 border-b-2 border-um-maize pb-1 text-base font-semibold text-um-blue">
+      <h3 className="mt-7 font-mono text-xs font-medium uppercase tracking-[0.15em] text-um-maize">
         Course Overview
       </h3>
       {ES212_OVERVIEW.map((p) => (
@@ -197,12 +197,12 @@ export default function Evidence({
       ))}
 
       {/* Learning objectives — verbatim */}
-      <h3 className="mt-6 border-b-2 border-um-maize pb-1 text-base font-semibold text-um-blue">
+      <h3 className="mt-7 font-mono text-xs font-medium uppercase tracking-[0.15em] text-um-maize">
         Learning objectives
       </h3>
       <p className="mt-2 text-sm leading-relaxed">{ES212_OBJECTIVES_INTRO}</p>
 
-      <h4 className="mt-4 font-semibold text-um-blue">Knowledge</h4>
+      <h4 className="mt-4 font-semibold text-foreground">Knowledge</h4>
       <ul className="mt-1 space-y-0.5 text-sm">
         {ES212_KNOWLEDGE.map((k) => (
           <li key={k} className="flex gap-2 pl-1">
@@ -216,7 +216,7 @@ export default function Evidence({
         below.
       </p>
 
-      <h4 className="mt-4 font-semibold text-um-blue">Skills</h4>
+      <h4 className="mt-4 font-semibold text-foreground">Skills</h4>
       <ul className="mt-1 space-y-3 text-sm">
         {ES212_SKILLS_TEXT.map((text, i) => (
           <li key={text} className="pl-1">
@@ -234,14 +234,17 @@ export default function Evidence({
       </ul>
 
       {/* Course Modules and Topics — verbatim, with chips */}
-      <h3 className="mt-6 border-b-2 border-um-maize pb-1 text-base font-semibold text-um-blue">
+      <h3 className="mt-7 font-mono text-xs font-medium uppercase tracking-[0.15em] text-um-maize">
         Course Modules and Topics
       </h3>
       <ol className="mt-3 space-y-3">
         {ES212_MODULES.map((m) => {
           const unit = unitMap.get(m.id);
           return (
-            <li key={m.id} className="rounded-lg border border-rule p-3.5">
+            <li
+            key={m.id}
+            className="rounded-[13px] border border-rule bg-white/[0.025] p-3.5"
+          >
               <p className="text-sm font-semibold text-foreground">{m.title}</p>
               <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">
                 Topics
@@ -279,12 +282,12 @@ export default function Evidence({
           <button
             aria-label="Close"
             onClick={() => setOpen(null)}
-            className="absolute inset-0 bg-black/30"
+            className="absolute inset-0 bg-[rgba(0,5,14,0.72)]"
           />
-          <div className="relative flex h-full w-full max-w-2xl flex-col border-l border-rule bg-background shadow-2xl">
+          <div className="relative flex h-full w-full max-w-2xl flex-col rounded-l-2xl border-l border-rule bg-panel shadow-2xl">
             <div className="flex items-start justify-between gap-3 border-b border-rule p-4">
               <div>
-                <p className="text-sm font-semibold text-um-blue">
+                <p className="text-sm font-bold text-white">
                   {openDoc.title}
                 </p>
                 <p className="mt-0.5 text-xs text-muted">{open.note}</p>
@@ -292,7 +295,7 @@ export default function Evidence({
               <div className="flex shrink-0 items-center gap-3">
                 <a
                   href={`/syllabi/${openDoc.slug}`}
-                  className="text-xs font-medium text-um-blue underline decoration-um-maize decoration-2 underline-offset-2"
+                  className="text-xs font-medium text-um-maize-2 underline underline-offset-2 hover:text-um-maize"
                 >
                   Open full page ↗
                 </a>

@@ -21,13 +21,13 @@ export default async function SyllabusPage({
       <div className="flex flex-wrap gap-4 text-sm">
         <Link
           href="/syllabi"
-          className="text-um-blue underline decoration-um-maize decoration-2 underline-offset-2"
+          className="text-um-maize-2 underline underline-offset-2 hover:text-um-maize"
         >
           ← All source documents
         </Link>
         <Link
           href="/"
-          className="text-um-blue underline decoration-um-maize decoration-2 underline-offset-2"
+          className="text-um-maize-2 underline underline-offset-2 hover:text-um-maize"
         >
           Back to the case
         </Link>

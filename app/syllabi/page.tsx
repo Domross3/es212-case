@@ -10,10 +10,13 @@ export default function SyllabiIndex() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
-      <Link href="/" className="text-sm text-um-blue underline decoration-um-maize decoration-2 underline-offset-2">
+      <Link
+        href="/"
+        className="text-sm text-um-maize-2 underline underline-offset-2 hover:text-um-maize"
+      >
         ← Back to the case
       </Link>
-      <h1 className="mt-4 text-2xl font-semibold tracking-tight text-um-blue">
+      <h1 className="mt-4 text-2xl font-bold tracking-tight text-foreground">
         Source documents
       </h1>
       <p className="mt-1 text-sm text-muted">
@@ -22,7 +25,7 @@ export default function SyllabiIndex() {
         <a
           href="/es212-syllabus.pdf"
           target="_blank"
-          className="text-um-blue underline decoration-um-maize decoration-2 underline-offset-2"
+          className="text-um-maize-2 underline underline-offset-2 hover:text-um-maize"
         >
           Official ES 212 syllabus (PDF)
         </a>
@@ -31,23 +34,31 @@ export default function SyllabiIndex() {
       {anchor && (
         <Link
           href={`/syllabi/${anchor.slug}`}
-          className="mt-6 block rounded-lg border-2 border-um-maize bg-um-maize/10 p-4 hover:bg-um-maize/20"
+          className="lift mt-6 flex items-center gap-3 rounded-[13px] border border-um-maize/30 bg-um-maize/[0.06] p-4"
         >
-          <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-            The course in question
-          </p>
-          <p className="mt-1 font-semibold text-um-blue">{anchor.title}</p>
+          <span className="flex-1">
+            <span className="block font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
+              The course in question
+            </span>
+            <span className="mt-1 block font-semibold text-foreground">
+              {anchor.title}
+            </span>
+          </span>
+          <span className="shrink-0 text-[15px] text-um-maize">↗</span>
         </Link>
       )}
 
-      <ul className="mt-4 space-y-2">
+      <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
         {rest.map((s) => (
           <li key={s.slug}>
             <Link
               href={`/syllabi/${s.slug}`}
-              className="block rounded-lg border border-rule p-4 hover:border-um-maize hover:bg-um-maize/5"
+              className="lift flex min-h-[70px] items-center gap-3 rounded-[13px] border border-rule bg-white/[0.03] p-4"
             >
-              <p className="text-sm font-medium text-um-blue">{s.title}</p>
+              <p className="flex-1 text-[13.5px] font-medium leading-snug text-foreground">
+                {s.title}
+              </p>
+              <span className="shrink-0 text-[15px] text-um-maize">↗</span>
             </Link>
           </li>
         ))}
