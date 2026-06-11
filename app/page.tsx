@@ -1,4 +1,7 @@
 import Chat from "@/components/chat";
+import Evidence from "@/components/evidence";
+import { SKILLS, UNITS } from "@/lib/coverage";
+import { loadSyllabi } from "@/lib/syllabi";
 
 const stats = [
   "30 business credits",
@@ -43,9 +46,7 @@ export default function Home() {
           aria-label="ES 212 syllabus with coverage"
           className="min-h-0 overflow-y-auto border-b border-rule lg:border-b-0 lg:border-r"
         >
-          <div className="p-5 text-sm text-muted">
-            ES 212 syllabus — unit-by-unit coverage citations. (In progress.)
-          </div>
+          <Evidence units={UNITS} skills={SKILLS} docs={loadSyllabi()} />
         </section>
 
         <section aria-label="Ask the syllabi" className="min-h-0">

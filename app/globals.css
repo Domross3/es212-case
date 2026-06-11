@@ -62,3 +62,55 @@ body {
   color: var(--um-blue);
   margin-block: 0.75rem 0.25rem;
 }
+
+/* Full-page syllabus documents */
+.doc-markdown {
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.doc-markdown h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--um-blue);
+  margin-bottom: 0.5rem;
+}
+.doc-markdown h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--um-blue);
+  margin-block: 1.25rem 0.4rem;
+  border-bottom: 2px solid var(--um-maize);
+  padding-bottom: 0.2rem;
+}
+.doc-markdown h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--um-blue);
+  margin-block: 1rem 0.3rem;
+}
+.doc-markdown p {
+  margin-block: 0.5rem;
+}
+.doc-markdown ul,
+.doc-markdown ol {
+  margin-block: 0.5rem;
+  padding-left: 1.4rem;
+  list-style: disc;
+}
+.doc-markdown ol {
+  list-style: decimal;
+}
+.doc-markdown li {
+  margin-block: 0.2rem;
+}
+.doc-markdown strong {
+  font-weight: 600;
+  color: var(--um-blue);
+}
+.doc-markdown blockquote {
+  border-left: 3px solid var(--um-maize);
+  padding-left: 0.75rem;
+  color: var(--muted);
+  margin-block: 0.6rem;
+}
