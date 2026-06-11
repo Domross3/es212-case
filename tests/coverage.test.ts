@@ -6,6 +6,7 @@ import {
   type Citation,
 } from "../lib/coverage";
 import { ES212_SLUG, loadSyllabi } from "../lib/syllabi";
+import { ES212_MODULES, ES212_SKILLS_TEXT } from "../lib/es212-content";
 
 const docs = new Map(loadSyllabi().map((s) => [s.slug, s]));
 const allRows: { label: string; citations: Citation[] }[] = [
@@ -61,6 +62,19 @@ describe("coverage map", () => {
         );
       }
     }
+  });
+
+  it("syllabus modules align with coverage units", () => {
+    // Modules 1-13 each map to a unit; module 14 is the wrap-up with no mapping.
+    expect(ES212_MODULES.map((m) => m.id)).toEqual(
+      Array.from({ length: 14 }, (_, i) => i + 1)
+    );
+    const unitIds = new Set(UNITS.map((u) => u.id));
+    for (const m of ES212_MODULES.filter((m) => m.id <= 13)) {
+      expect(unitIds.has(m.id), `module ${m.id} has no coverage unit`).toBe(true);
+    }
+    // Every verbatim skill bullet has a chips row.
+    expect(ES212_SKILLS_TEXT).toHaveLength(SKILLS.length);
   });
 
   it("a supplementary course is never the primary (first) citation", () => {
